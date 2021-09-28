@@ -1,0 +1,21 @@
+{% extends "WebProjectApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+  {% if "valid" in request.GET %}
+    <p style="color: white; text-align: center; margin: 20px auto;">Information received, Thank you</p>
+  {% endif %} 
+  
+  <div class="form-content"> {% comment%} method="POST" sends info in background intead of URL (GET) {% endcomment %}
+    <form action="" method="POST" style="text-align: center;">
+      {% csrf_token %}
+      <table style="color: white; margin: auto;">{{contact_form.as_table}}</table>
+      <input type="submit" value="Send" style="margin-top: 20px; width: 150px;">
+    </form>
+  </div>
+
+<p style="color: white;">{{request.POST}}</p>
+{% endblock %}
+
